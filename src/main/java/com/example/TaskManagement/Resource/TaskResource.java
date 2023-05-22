@@ -16,11 +16,13 @@ public class TaskResource {
     @Autowired
     private TaskService taskService;
 
+    @CrossOrigin
     @GetMapping("/all")
     public List<Tasks> listAll(){
         return taskService.listAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public Optional<Tasks> getById(@PathVariable Integer id){
         if(taskService.exist(id)) {
@@ -30,11 +32,13 @@ public class TaskResource {
             return null;
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     public Tasks saveTask(@RequestBody Tasks tasks){
         return taskService.save(tasks);
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public Tasks updateTask(@RequestBody Tasks tasks, @PathVariable Integer id){
         Optional<Tasks> task1 = taskService.getById(id);
@@ -42,6 +46,7 @@ public class TaskResource {
         return taskService.save(tasks);
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public void deleteTask(@PathVariable Integer id){
         if(taskService.exist(id)) {
