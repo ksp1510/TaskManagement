@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -14,15 +15,24 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepo;
 
+    public Boolean exist(Integer taskId){
+        return taskRepo.existsById(taskId);
+    }
+
     public List<Task> listAll(){
         return taskRepo.findAll();
     }
 
-    public void save(Task task){
-        taskRepo.save(task);
+    public Optional<Task> getById(Integer taskId){
+        return taskRepo.findById(taskId);
     }
 
-    public void delete(Task task){
-        taskRepo.delete(task);
+    public Task save(Task task){
+        return taskRepo.save(task);
+    }
+
+
+    public void delete(Integer taskId){
+        taskRepo.deleteById(taskId);
     }
 }

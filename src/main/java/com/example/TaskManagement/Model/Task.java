@@ -10,6 +10,8 @@ import javax.persistence.Id;
 public class Task {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idtest;
     private String name;
     private String surname;
@@ -40,8 +42,6 @@ public class Task {
     }
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdtest() {
         return idtest;
     }
