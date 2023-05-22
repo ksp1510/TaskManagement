@@ -1,7 +1,7 @@
 package com.example.TaskManagement.Service;
 
 
-import com.example.TaskManagement.Model.Task;
+import com.example.TaskManagement.Model.Tasks;
 import com.example.TaskManagement.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +19,16 @@ public class TaskService {
         return taskRepo.existsById(taskId);
     }
 
-    public List<Task> listAll(){
+    public List<Tasks> listAll(){
         return taskRepo.findAll();
     }
 
-    public Optional<Task> getById(Integer taskId){
+    public Optional<Tasks> getById(Integer taskId){
         return taskRepo.findById(taskId);
     }
 
-    public Task save(Task task){
-        return taskRepo.save(task);
+    public Tasks save(Tasks tasks){
+        return taskRepo.save(tasks);
     }
 
 

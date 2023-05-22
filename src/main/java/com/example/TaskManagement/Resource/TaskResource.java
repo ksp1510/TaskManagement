@@ -1,7 +1,7 @@
 package com.example.TaskManagement.Resource;
 
 
-import com.example.TaskManagement.Model.Task;
+import com.example.TaskManagement.Model.Tasks;
 import com.example.TaskManagement.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,12 @@ public class TaskResource {
     private TaskService taskService;
 
     @GetMapping("/all")
-    public List<Task> listAll(){
+    public List<Tasks> listAll(){
         return taskService.listAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Task> getById(@PathVariable Integer id){
+    public Optional<Tasks> getById(@PathVariable Integer id){
         if(taskService.exist(id)) {
             return taskService.getById(id);
         }
@@ -31,15 +31,15 @@ public class TaskResource {
     }
 
     @PostMapping("/save")
-    public Task saveTask(@RequestBody Task task){
-        return taskService.save(task);
+    public Tasks saveTask(@RequestBody Tasks tasks){
+        return taskService.save(tasks);
     }
 
     @PutMapping("/update/{id}")
-    public Task updateTask(@RequestBody Task task, @PathVariable Integer id){
-        Optional<Task> task1 = taskService.getById(id);
-        task.setIdtest(id);
-        return taskService.save(task);
+    public Tasks updateTask(@RequestBody Tasks tasks, @PathVariable Integer id){
+        Optional<Tasks> task1 = taskService.getById(id);
+        tasks.setId(id);
+        return taskService.save(tasks);
     }
 
     @DeleteMapping("/delete/{id}")
